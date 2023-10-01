@@ -6,16 +6,16 @@ char *ft_strdup(const char *s)
     char    *str;
 
     i = 0;
-    len = ft_strlen(s) - 1;
-    str = malloc(sizeof(char) * len + 2);
+    len = ft_strlen(s);
+    str = malloc(sizeof(char) * len + 1);
     if(!str)
         return(0);
-    while(i <= len)
+    while(i < len)
     {
         str[i] = s[i];
         i++;
     }
-    str[len + 1] = '\0';
+    str[i] = '\0';
     return str;
 }
 /* 

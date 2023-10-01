@@ -5,27 +5,29 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
     size_t i;
     size_t size;
     char *str;
+    const char *ptr;
 
-    size = ft_strlen(s);
-    i = 0;
     if (!s)
         return (0);
+    size = ft_strlen(s);
+    i = 0;
     if (start > size)
     {
         str = ft_calloc(1, 1);
+        if (!str)
+            return (0);
         return (str);
     }
-    if (len > size)
+    if (len > (size - start))
         len = size - start;
-    str = malloc(sizeof(char) * len + 1);
+    ptr = &s[start];
+    str = (char *)malloc(sizeof(char) * len + 1);
     if (!str)
         return (0);
-    int futstart = start;
-    while (s[futstart] && i < len && start < size)
+    while (i < len && start < size)
     {
-        str[i] = s[futstart];
+        str[i] = ptr[i];
         i++;
-        futstart++;
     }
     str[i] = '\0';
     return str;

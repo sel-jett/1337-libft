@@ -1,27 +1,18 @@
 #include "libft.h"
 int ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    size_t i;
-    unsigned char *haystack;
-    unsigned char *needle;
-
-    i = 0;
-    haystack = (unsigned char *)s1;
-    needle = (unsigned char *)s2;
-
-    if ((!haystack && !needle) || n == 0)
-        return (0);
-    while (*haystack && *haystack == *needle && i < n)
+    while (n && *(unsigned char *)s1 == *(unsigned char *)s2)
     {
-        haystack++;
-        needle++;
-        i++;
+        n--;
+        s1++;
+        s2++;
     }
-    return (int)(*haystack - *needle);
+    if (!n)
+        return (0);
+    return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-
-/* 
+/* s
 #include <string.h>
 int main()
 {
